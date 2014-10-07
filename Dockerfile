@@ -3,6 +3,11 @@ MAINTAINER Manuel Weiss "mweiss@moonfruit.com"
 
 # see http://docs.docker.com/articles/dockerfile_best-practices/
 
+# set your values here:
+ENV CMS_ADMIN_USERNAME admin
+ENV CMS_ADMIN_EMAIL nobody@example.com
+ENV CMS_ADMIN_PASSW djangocms
+
 RUN apt-get update && apt-get install -y \
         python-pip \
         python-pil \
@@ -32,6 +37,12 @@ RUN djangocms \
   --cms-version=stable \
   --no-input \
     default
+
+COPY create_superuser.sh /opt/djangocms/
+
+RUN ./create_superuser.sh
+RUN python manage.py syncdb --noinput
+RUN python manage.py migrate
 
 EXPOSE 80
 
