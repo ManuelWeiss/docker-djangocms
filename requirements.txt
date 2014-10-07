@@ -1,0 +1,13 @@
+# fixing versions
+
+# https://pip.readthedocs.org/en/1.1/requirements.html
+# Two Scoops of Django book page 50
+
+djangocms-installer==0.5.4
+django-extensions==1.4.0
+easy-thumbnails==2.1
+cmsplugin-filer==0.10
+djangocms-cascade==0.3.2
+boto==2.32.1 # for S3
+django-storages==1.1.8
+django-compressor==1.4
